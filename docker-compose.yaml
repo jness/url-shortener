@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  # official mongodb image
+  # https://hub.docker.com/_/mongo
+  mongo:
+    image: mongo:7.0-rc
+    # volumes:
+    #   - ./mongo_data:/data
+    ports:
+      - 27017:27017
+
+  # official redis image
+  # https://hub.docker.com/_/redis
+  redis:
+    image: redis:7.2-alpine
+    # volumes:
+    #   - ./redis_data:/data
+    ports:
+      - 6379:6379
+
+  # our flask application
+  app:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
+      - redis
