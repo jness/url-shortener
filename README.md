@@ -1,5 +1,7 @@
 # URL Shortener 
 
+`This is a demo and proof of concept, it should not be leveraged for any meaningful work`
+
 This is a simple Flask application for shortening full urls to random strings,
 and then looking them up by that short string.
 
